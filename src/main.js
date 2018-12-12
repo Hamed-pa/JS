@@ -1,25 +1,18 @@
 'use strict';
 
-function Calculator(num) {
-    this.number=0;
+function Accumulator(num) {
+    this.number = num;
 
-    this.read = function(num){
-        this.number = num;
-        return this.number;
-    };
-
-    this.sum = function (num){
+    this.read = function (num) {
         this.number += num;
         return this.number;
     };
-
-    this.mul = function (num){
-        this.mul *= num;
+    this.valu = function () {
         return this.number;
     };
 };
 
-let a = new Calculator();
-
-a.read(12);
-alert(a.sum(3));
+let aAccumulator = new Accumulator(5);
+aAccumulator.read(10)
+aAccumulator.valu();
+console.log(aAccumulator);

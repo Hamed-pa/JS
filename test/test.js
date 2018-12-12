@@ -2,40 +2,33 @@ const chai = require("chai");
 let assert = chai.assert;
 
 describe("chaining", function () {
-    it('read a number like 12', function () {
-        assert.equal(aCalculator.read(12), 12);
+    it('sum a previous number with 10', function () {
+        assert.equal(aAccumulator.read(10), 15);
     });
 
-    it("sum a previous number with 3", function () {
-        assert.equal(aCalculator.sum(3), 15);
+    it("again sum a previous result with 11", function () {
+        assert.equal(aAccumulator.read(11), 26);
     });
 
-    it("mul a previous result with 10", function () {
-        assert.equal(aCalculator.mul(10), 150);
+    it("shaow result", function () {
+        assert.equal(aAccumulator.valu(), 26);
     });
 });
 
 
 
-function Calculator(num) {
-    this.number = 0;
+function Accumulator(num) {
+    this.number = num;
 
     this.read = function (num) {
-        this.number = num;
-        return this.number;
-    };
-
-    this.sum = function (num) {
         this.number += num;
         return this.number;
     };
-
-    this.mul = function (num) {
-        this.number *= num;
+    this.valu = function () {
         return this.number;
     };
 };
 
-let aCalculator = new Calculator();
+let aAccumulator = new Accumulator(5);
 
 
