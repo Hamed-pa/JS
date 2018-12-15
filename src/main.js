@@ -1,18 +1,10 @@
 'use strict';
 
-function Accumulator(num) {
-    this.number = num;
+function sum(a,b) {
+    alert((a+b).toFixed(2));
+}
 
-    this.read = function (num) {
-        this.number += num;
-        return this.number;
-    };
-    this.valu = function () {
-        return this.number;
-    };
-};
+let a = +prompt('enter first number');
+let b = +prompt('enter second number');
+sum(a,b);
 
-let aAccumulator = new Accumulator(5);
-aAccumulator.read(10)
-aAccumulator.valu();
-console.log(aAccumulator);
