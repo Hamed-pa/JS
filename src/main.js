@@ -1,35 +1,12 @@
 'use strict';
 
 
-function random(min,max,num){
-    let generation=num;
-
-    if (num === undefined){
-    generation = Math.random();
+function checkSpam (str) {
+    if (str.includes('xxx') || str.includes('ViAgRA')) {
+        return true;
     }
-
-    function Increase() {
-        generation *=10;
-        random(min,max,generation);
-        return false;
-    }
-
-    function Decrease () {
-        generation /=2
-        random(min,max,generation);
-        return false;
-    }
-
-    if (generation < min){
-        Increase(min,max,generation);
-    } else if(generation > max) {
-        Decrease(min,max,generation);
-    }
-
-    return (+generation*2);
+    return false;
 }
 
 
-
-let rand = random(15, 40);
-alert(rand);
+console.log(checkSpam('goo xxxxd'));

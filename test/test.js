@@ -46,34 +46,25 @@ function Accumulator(num) {
 const chai = require("chai");
 let assert = chai.assert;
 
-describe("Random", function () {
-    it('Whether it is between 1 and 2?', function () {
-        let rand = randomInteger(1, 2);
-        assert.isTrue(1 <= rand && rand <= 2);
+describe("check spam", function () {
+    it('check the string is spam or not?', function () {
+        assert.isTrue(checkSpam('axxxxx and hamer'));
     });
 
-    it("Whether it is between 1 and 9?", function () {
-        let rand = randomInteger(1, 9);
-        assert.isTrue(1 <= rand && rand <= 9);
+    it("check the string is spam or not?", function () {
+        assert.isFalse(checkSpam('hello buddy'));
     });
 
-    it("Whether it is between 5 and 7?", function () {
-        let rand = randomInteger(5, 7);
-        assert.isTrue(5 <= rand && rand <= 7);
+    it("check the string is spam or not?", function () {
+        assert.isTrue(checkSpam('axe and hamer ViAgRA'));
     });
 });
 
-function randomInteger(a, b) {
-    let result;
-
-    while (1) {
-
-        result = Math.random() * 10;
-        if (result >= a && result <= b) {
-            return parseInt(result);
-        }
+function checkSpam(str) {
+    if (str.includes('xxx') || str.includes('ViAgRA')) {
+        return true;
     }
+    return false;
 }
-
 
 
