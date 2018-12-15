@@ -48,23 +48,24 @@ let assert = chai.assert;
 
 describe("check spam", function () {
     it('check the string is spam or not?', function () {
-        assert.isTrue(checkSpam('axxxxx and hamer'));
+        assert.equal(truncate('Let the ruling classes tremble at a Communistic revolution.'), 'Let the ruling classes tr ...');
     });
 
     it("check the string is spam or not?", function () {
-        assert.isFalse(checkSpam('hello buddy'));
+        assert.equal(truncate('The proletarians have nothing to lose but their chains.'), 'The proletarians have not ...');
     });
 
     it("check the string is spam or not?", function () {
-        assert.isTrue(checkSpam('axe and hamer ViAgRA'));
+        assert.equal(truncate('They have a world to win.'), 'They have a world to win.');
     });
 });
 
-function checkSpam(str) {
-    if (str.includes('xxx') || str.includes('ViAgRA')) {
-        return true;
+function truncate(str) {
+    if (str.length > 25) {
+        str = str.slice(0, 25) + ' ...';
+        return str;
     }
-    return false;
+    return str;
 }
 
 

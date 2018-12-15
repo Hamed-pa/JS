@@ -1,12 +1,13 @@
 'use strict';
 
 
-function checkSpam (str) {
-    if (str.includes('xxx') || str.includes('ViAgRA')) {
-        return true;
+function truncate(str) {
+    if(str.length > 25) {
+         str = str.slice(0,25) + ' ...';
+         return str;
     }
-    return false;
+    return str;
 }
 
+console.log(truncate('Let the ruling classes tremble at a Communistic revolution. The proletarians have nothing to lose but their chains. They have a world to win.'));
 
-console.log(checkSpam('goo xxxxd'));
