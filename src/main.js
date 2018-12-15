@@ -1,13 +1,19 @@
 'use strict';
 
 
-function truncate(str) {
-    if(str.length > 25) {
-         str = str.slice(0,25) + ' ...';
-         return str;
+function extractCurrencyValue (val) {
+    let value = String(val);
+
+    if (~value.indexOf('$')) {
+        if (value[0]  === '$'){
+
+            return value.slice(1, value.length)
+        } else {
+            return value.substr(-(value.length), value.length-1)
+        }
     }
-    return str;
+    return value;
 }
 
-console.log(truncate('Let the ruling classes tremble at a Communistic revolution. The proletarians have nothing to lose but their chains. They have a world to win.'));
+alert(extractCurrencyValue('150$'));
 

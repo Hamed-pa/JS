@@ -46,26 +46,31 @@ function Accumulator(num) {
 const chai = require("chai");
 let assert = chai.assert;
 
-describe("check spam", function () {
-    it('check the string is spam or not?', function () {
-        assert.equal(truncate('Let the ruling classes tremble at a Communistic revolution.'), 'Let the ruling classes tr ...');
+describe("extract currency value", function () {
+    it('extract currency value', function () {
+        assert.equal(extractCurrencyValue(200),200);
     });
 
-    it("check the string is spam or not?", function () {
-        assert.equal(truncate('The proletarians have nothing to lose but their chains.'), 'The proletarians have not ...');
+    it("extract currency value", function () {
+        assert.equal(extractCurrencyValue("$200"),200);
     });
 
-    it("check the string is spam or not?", function () {
-        assert.equal(truncate('They have a world to win.'), 'They have a world to win.');
+    it("extract currency value", function () {
+        assert.equal(extractCurrencyValue("200$"),200);
     });
 });
 
-function truncate(str) {
-    if (str.length > 25) {
-        str = str.slice(0, 25) + ' ...';
-        return str;
-    }
-    return str;
-}
+function extractCurrencyValue(val) {
+    let value = String(val);
 
+    if (~value.indexOf('$')) {
+        if (value[0] === '$') {
+
+            return +(value.slice(1, value.length))
+        } else {
+            return +(value.substr(-(value.length), value.length - 1))
+        }
+    }
+    return +value;
+}
 
