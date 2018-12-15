@@ -1,10 +1,23 @@
 'use strict';
 
-function sum(a,b) {
-    alert((a+b).toFixed(2));
+
+let result = 0;
+let j = 0;
+
+function sum(){
+
+    while (1) {
+
+        j = prompt(`Enter a number`);
+
+        if (j === null || j === "" || isNaN(+j) === true) {
+            return null;
+        }
+
+        result += +j;
+        alert(result);
+
+    }
 }
 
-let a = +prompt('enter first number');
-let b = +prompt('enter second number');
-sum(a,b);
-
+sum();
