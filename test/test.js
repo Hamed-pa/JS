@@ -1,12 +1,6 @@
-const chai = require("chai");
-let assert = chai.assert;
 
+/*
 describe("chaining", function () {
-    let aAccumulator = new Accumulator(5);
-
-    it('initializes the accumulator', function() {
-        assert.equal(aAccumulator.number, 5);
-    });
 
     it('sum a previous number with 10', function () {
         aAccumulator.read(10);
@@ -24,6 +18,7 @@ describe("chaining", function () {
         aAccumulator.read(0);
 
         assert.equal(aAccumulator.valu(), 26);
+        assert.isTrue
     });
 
     it("again sum a previous result with -12", function () {
@@ -46,7 +41,39 @@ function Accumulator(num) {
         return this.number;
     };
 };
+*/
 
+const chai = require("chai");
+let assert = chai.assert;
+
+describe("Random", function () {
+    it('Whether it is between 1 and 2?', function () {
+        let rand = random(1, 2);
+        assert.isTrue(1 <= rand && rand <= 2);
+    });
+
+    it("Whether it is between 1 and 9?", function () {
+        let rand = random(1, 9);
+        assert.isTrue(1 <= rand && rand <= 9);
+    });
+
+    it("Whether it is between 5 and 7?", function () {
+        let rand = random(5, 7);
+        assert.isTrue(5 <= rand && rand <= 7);
+    });
+});
+
+function random(a, b) {
+    let result;
+
+    while (1) {
+
+        result = Math.random() * 10;
+        if (result >= a && result <= b) {
+            return result;
+        }
+    }
+}
 
 
 

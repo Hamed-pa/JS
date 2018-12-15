@@ -1,23 +1,35 @@
 'use strict';
 
 
-let result = 0;
-let j = 0;
+function random(min,max,num){
+    let generation=num;
 
-function sum(){
-
-    while (1) {
-
-        j = prompt(`Enter a number`);
-
-        if (j === null || j === "" || isNaN(+j) === true) {
-            return null;
-        }
-
-        result += +j;
-        alert(result);
-
+    if (num === undefined){
+    generation = Math.random();
     }
+
+    function Increase() {
+        generation *=10;
+        random(min,max,generation);
+        return false;
+    }
+
+    function Decrease () {
+        generation /=2
+        random(min,max,generation);
+        return false;
+    }
+
+    if (generation < min){
+        Increase(min,max,generation);
+    } else if(generation > max) {
+        Decrease(min,max,generation);
+    }
+
+    return (+generation*2);
 }
 
-sum();
+
+
+let rand = random(15, 40);
+alert(rand);
