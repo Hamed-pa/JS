@@ -48,29 +48,29 @@ let assert = chai.assert;
 
 describe("Random", function () {
     it('Whether it is between 1 and 2?', function () {
-        let rand = random(1, 2);
+        let rand = randomInteger(1, 2);
         assert.isTrue(1 <= rand && rand <= 2);
     });
 
     it("Whether it is between 1 and 9?", function () {
-        let rand = random(1, 9);
+        let rand = randomInteger(1, 9);
         assert.isTrue(1 <= rand && rand <= 9);
     });
 
     it("Whether it is between 5 and 7?", function () {
-        let rand = random(5, 7);
+        let rand = randomInteger(5, 7);
         assert.isTrue(5 <= rand && rand <= 7);
     });
 });
 
-function random(a, b) {
+function randomInteger(a, b) {
     let result;
 
     while (1) {
 
         result = Math.random() * 10;
         if (result >= a && result <= b) {
-            return result;
+            return parseInt(result);
         }
     }
 }
