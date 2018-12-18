@@ -1,22 +1,21 @@
 'use strict';
 
-let styles = [
-    "Jazz",
-    "Blues"
-];
+let result = 0;
+let numbers = [];
 
-styles.push("Rock-n-Roll");
+while(1){
+    
+    let num = prompt("inter a number");
+    if (num === '' || isNaN(+num) || num === null) {
+        for (let val of numbers) {
+            result += +val;
+        }
 
-function middle(number){
-    if (!number % 2 === 0){
-        return ((number-1)/2);
-    };
-};
+        break;
+    } else {
+        numbers.push(num);
+    }
 
-styles[middle(styles.length)] = "Classics";
+}
 
-console.log(styles.unshift());
-
-styles.push("Rap","Reggae");
-
-console.log(styles);
+console.log(result);
