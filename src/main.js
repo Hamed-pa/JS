@@ -1,19 +1,22 @@
 'use strict';
 
+let styles = [
+    "Jazz",
+    "Blues"
+];
 
-function extractCurrencyValue (val) {
-    let value = String(val);
+styles.push("Rock-n-Roll");
 
-    if (~value.indexOf('$')) {
-        if (value[0]  === '$'){
+function middle(number){
+    if (!number % 2 === 0){
+        return ((number-1)/2);
+    };
+};
 
-            return value.slice(1, value.length)
-        } else {
-            return value.substr(-(value.length), value.length-1)
-        }
-    }
-    return value;
-}
+styles[middle(styles.length)] = "Classics";
 
-alert(extractCurrencyValue('150$'));
+console.log(styles.unshift());
 
+styles.push("Rap","Reggae");
+
+console.log(styles);
