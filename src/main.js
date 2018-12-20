@@ -1,21 +1,25 @@
 'use strict';
 
-let result = 0;
-let numbers = [];
+let array = [7, -1, -6, 3, -9, 4, 5, -6];
 
-while(1){
-    
-    let num = prompt("inter a number");
-    if (num === '' || isNaN(+num) || num === null) {
-        for (let val of numbers) {
-            result += +val;
-        }
+function getMaxSubSum(array){
+    let sum = 0;
+    let result = 0;
+    for (let val of array) {
+        
+        if (sum + val > 0){
+            sum += val;
+        } else {
+            sum = 0;
+        };
 
-        break;
-    } else {
-        numbers.push(num);
-    }
+        if (sum > result) {
+            result = sum;
+        };
 
-}
+    };
+    return result;
+};
 
-console.log(result);
+
+console.log(getMaxSubSum(array));
