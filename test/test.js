@@ -48,18 +48,23 @@ let assert = chai.assert;
 
 describe("extract currency value", function () {
     it('extract currency value', function () {
-        assert.equal(extractCurrencyValue(200),200);
+        assert.equal( extractCurrencyValue(200), 200 );
     });
 
     it("extract currency value", function () {
-        assert.equal(extractCurrencyValue("$200"),200);
+        assert.equal( extractCurrencyValue("$200"), 200 );
     });
 
     it("extract currency value", function () {
-        assert.equal(extractCurrencyValue("200$"),200);
+        assert.equal( extractCurrencyValue("200$"), 200 );
     });
 });
 
+/**
+ *  Extract the integer part of given data 
+ * 
+ * @param {string|integer} val 
+ */
 function extractCurrencyValue(val) {
     let value = String(val);
 
@@ -72,4 +77,3 @@ function extractCurrencyValue(val) {
     }
     return +value;
 }
-
