@@ -1,30 +1,16 @@
 'use strict';
 
-function comelize(value){
-   let result="";
-   let count = 0;
-   let broken = value.split('-');
+let array = [6, 17, 5, 4, 1, 10, 12];
 
-   for(let val of broken){
-       
-       if(!val==""){
+function filterRange(arr,min,max){
+    let result = [];
 
-           if (count==0){
-               result += val;
-               count++;
-               
-           } else {
-               result += val.charAt(0).toUpperCase() + val.slice(1);
-           };
-       } else {
-           count++
-       };
-   };
-   return result;
-
+    for (let val of arr){
+        if(val >= min && val <= max){
+            result.push(val);
+        };
+    };
+    return result;
 };
 
-
-console.log(comelize("background-color"));
-console.log(comelize("list-style-image"));
-console.log(comelize("-webkit-transition"));
+console.log(filterRange(array, 10, 20));
