@@ -1,25 +1,30 @@
 'use strict';
 
-let array = [7, -1, -6, 3, -9, 4, 5, -6];
+function comelize(value){
+   let result="";
+   let count = 0;
+   let broken = value.split('-');
 
-function getMaxSubSum(array){
-    let sum = 0;
-    let result = 0;
-    for (let val of array) {
-        
-        if (sum + val > 0){
-            sum += val;
-        } else {
-            sum = 0;
-        };
+   for(let val of broken){
+       
+       if(!val==""){
 
-        if (sum > result) {
-            result = sum;
-        };
+           if (count==0){
+               result += val;
+               count++;
+               
+           } else {
+               result += val.charAt(0).toUpperCase() + val.slice(1);
+           };
+       } else {
+           count++
+       };
+   };
+   return result;
 
-    };
-    return result;
 };
 
 
-console.log(getMaxSubSum(array));
+console.log(comelize("background-color"));
+console.log(comelize("list-style-image"));
+console.log(comelize("-webkit-transition"));

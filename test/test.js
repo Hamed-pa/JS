@@ -1,75 +1,41 @@
 
-/*
-describe("chaining", function () {
-
-    it('sum a previous number with 10', function () {
-        aAccumulator.read(10);
-
-        assert.equal(aAccumulator.valu(), 15);
-    });
-
-    it("again sum a previous result with 11", function () {
-        aAccumulator.read(11);
-
-        assert.equal(aAccumulator.valu(), 26);
-    });
-
-    it("again sum a previous result with 0", function () {
-        aAccumulator.read(0);
-
-        assert.equal(aAccumulator.valu(), 26);
-        assert.isTrue
-    });
-
-    it("again sum a previous result with -12", function () {
-        aAccumulator.read(-12);
-
-        assert.equal(aAccumulator.valu(), 14);
-    });
-});
-
-
-
-function Accumulator(num) {
-    this.number = num;
-
-    this.read = function (num) {
-        this.number += num;
-        // return this.number;  it doesn't need to return a value
-    };
-    this.valu = function () {
-        return this.number;
-    };
-};
-*/
-
 const chai = require("chai");
 let assert = chai.assert;
 
-describe("extract currency value", function () {
-    it('extract currency value', function () {
-        assert.equal(extractCurrencyValue(200),200);
+describe("comelize", function () {
+    it('comelize', function () {
+        assert.equal(comelize("background-color"), "backgroundColor");
     });
 
-    it("extract currency value", function () {
-        assert.equal(extractCurrencyValue("$200"),200);
+    it("comelize", function () {
+        assert.equal(comelize("list-style-image"), "listStyleImage");
     });
 
-    it("extract currency value", function () {
-        assert.equal(extractCurrencyValue("200$"),200);
+    it("comelize", function () {
+        assert.equal(comelize("-webkit-transition"), "WebkitTransition");
     });
 });
 
-function extractCurrencyValue(val) {
-    let value = String(val);
+function comelize(value) {
+    let result = "";
+    let count = 0;
+    let broken = value.split('-');
 
-    if (~value.indexOf('$')) {
-        if (value[0] === '$') {
-            return +(value.slice(1, value.length));
+    for (let val of broken) {
+
+        if (!val == "") {
+
+            if (count == 0) {
+                result += val;
+                count++;
+
+            } else {
+                result += val.charAt(0).toUpperCase() + val.slice(1);
+            };
         } else {
-            return +(value.substr(-(value.length), value.length - 1));
-        }
-    }
-    return +value;
-}
+            count++
+        };
+    };
+    return result;
 
+};
