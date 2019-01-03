@@ -2,18 +2,21 @@
 
 let array = [6, 17, 5, 4, 1, 10, 12];
 
-function filterRangeInPlace(array,min,max){
-    
+function sortReverse(array){
+    let x = 0 ;
 
-    for (let i = 0 ; i < array.length ; i++){
-        let val = array[i];
-        if ( array[i] < min || array[i] > max){
-            array.splice(i,1);
-            i--;
+    for (let j = 0 ; j < (array.length) ; j++){
+
+        for (let i = 0 ; i < array.length ; i++) {
+
+            if (array[i] < array[i+1]) {
+                x = array[i];
+                array[i] = array[i+1];
+                array[i+1] = x;
+            };
         };
     };
-    
 };
 
-filterRangeInPlace(array, 10, 20);
+sortReverse(array);
 console.log(array);
