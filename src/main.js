@@ -2,15 +2,18 @@
 
 let array = [6, 17, 5, 4, 1, 10, 12];
 
-function filterRange(arr,min,max){
-    let result = [];
+function filterRangeInPlace(array,min,max){
+    
 
-    for (let val of arr){
-        if(val >= min && val <= max){
-            result.push(val);
+    for (let i = 0 ; i < array.length ; i++){
+        let val = array[i];
+        if ( array[i] < min || array[i] > max){
+            array.splice(i,1);
+            i--;
         };
     };
-    return result;
+    
 };
 
-console.log(filterRange(array, 10, 20));
+filterRangeInPlace(array, 10, 20);
+console.log(array);
