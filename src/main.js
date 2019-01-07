@@ -1,23 +1,64 @@
 'use strict';
 
-let array = ["HTML", "JavaScript", "CSS", "HTTP"];
+function validBraces(str) {
+    let result = 0;
 
-function copySorted(arr){
-    let x = 0 ;
+    if (str.includes("{")){
 
-    for (let j = 0 ; j < (array.length) ; j++){
+       if (str.includes("}")){
+           result++;
+       } else {
+           result--;
+       };
+    };
 
-        for (let i = 0 ; i < array.length ; i++) {
-
-            if (array[i] > array[i+1]) {
-                x = array[i];
-                array[i] = array[i+1];
-                array[i+1] = x;
-            };
+    if (str.includes("}")) {
+        if (str.includes("{")) {
+            result++;
+        } else {
+            result--;
         };
     };
-    return arr;
+
+    if (str.includes("[")){
+        if (str.includes("]")) {
+            result++;
+        } else {
+            result--;
+        }
+    };
+
+    if (str.includes("]")) {
+
+        if (str.includes("[")) {
+            result++;
+        } else {
+            result--;
+        };
+    };
+
+    if (str.includes("(")) {
+        if (str.includes(")")) {
+            result++;
+        } else {
+            result--;
+        }
+    }
+
+    if (str.includes(")")) {
+        if (str.includes("(")) {
+            result++;
+        } else {
+            result--;
+        };
+    };
+
+    if (result > 0 && result % 2 == 0){
+        return true;
+    } else {
+        return false;
+    }
 };
 
-console.log(copySorted(array));
 
+console.log (validBraces("[}"));

@@ -1,29 +1,80 @@
 const chai = require("chai");
 let assert = chai.assert;
 
-describe("copy sorted", function () {
-    it('string sort', function () {
-        assert.equal(copySorted(array).join(), ["CSS", "HTML", "HTTP", "JavaScript"]);
+describe("check valid braces", function () {
+    it('check valid braces', function () {
+        assert.isTrue(validBraces("(){}[]"));
+    });
+
+    it('check valid braces', function () {
+        assert.isTrue(validBraces("([{}])"));
+    });
+
+    it('check valid braces', function () {
+        assert.isFalse(validBraces("[}"));
     });
 
 
 });
+function validBraces(str) {
+    let result = 0;
 
-let array = ["HTML", "JavaScript", "CSS", "HTTP"];
+    if (str.includes("{")) {
 
-function copySorted(arr) {
-    let x = 0;
-
-    for (let j = 0; j < (array.length); j++) {
-
-        for (let i = 0; i < array.length; i++) {
-
-            if (array[i] > array[i + 1]) {
-                x = array[i];
-                array[i] = array[i + 1];
-                array[i + 1] = x;
-            };
+        if (str.includes("}")) {
+            result++;
+        } else {
+            result--;
         };
     };
-    return arr;
+
+    if (str.includes("}")) {
+        if (str.includes("{")) {
+            result++;
+        } else {
+            result--;
+        };
+    };
+
+    if (str.includes("[")) {
+        if (str.includes("]")) {
+            result++;
+        } else {
+            result--;
+        }
+    };
+
+    if (str.includes("]")) {
+
+        if (str.includes("[")) {
+            result++;
+        } else {
+            result--;
+        };
+    };
+
+    if (str.includes("(")) {
+        if (str.includes(")")) {
+            result++;
+        } else {
+            result--;
+        }
+    }
+
+    if (str.includes(")")) {
+        if (str.includes("(")) {
+            result++;
+        } else {
+            result--;
+        };
+    };
+
+    if (result > 0 && result % 2 == 0) {
+        return true;
+    } else {
+        return false;
+    }
 };
+
+
+
